@@ -33,9 +33,35 @@ This section outlines the testing and benchmarking procedures for each submodule
 ### arkworks-algebra
 
 -   **Testing:**
-    -   [Instructions for running tests]
+    -   The following commands run the tests for optimized multiplication in the `ark-ff` crate, specifically targeting operations with `u64`/`i64`/`u128`/`i128` types. These tests use the `bn254` curve features.
+        First, navigate to the submodule directory:
+        ```bash
+        cd arkworks-algebra
+        ```
+        Then, run the specified tests:
+        ```bash
+        cargo test -p ark-ff --features ark-test-curves/bn254 -- montgomery_backend::test::test_mul_u64_random montgomery_backend::test::test_mul_i64_random montgomery_backend::test::test_mul_u128_random montgomery_backend::test::test_mul_i128_random
+        ```
+        After running the tests, you can return to the main project directory:
+        ```bash
+        cd ..
+        ```
 -   **Benchmarking:**
-    -   [Instructions for running benchmarks]
+    -   The benchmarks for these optimized multiplication routines are located in the `ark-test-curves` crate, under the `small_mul` benchmark suite. These benchmarks also use the `bn254` curve features.
+        First, navigate to the submodule directory:
+        ```bash
+        cd arkworks-algebra
+        ```
+        Then, run the benchmark:
+        ```bash
+        cargo bench -p ark-test-curves --bench small_mul --features bn254
+        ```
+        Benchmark results are typically generated in the `target/criterion/report/index.html` file within the `arkworks-algebra` directory.
+        After running the benchmarks, you can return to the main project directory:
+        ```bash
+        cd ..
+        ```
+    - Expectation for the benchmark: You should see that the `mul_u64` function should be around ~2.5x faster than the `standard mul (Fr * Fr)` function. The `mul_i64` function is slightly more expensive than `mul_u64`. Finally, the `mul_u128` takes slightly less time than standard mul, while `mul_i128` takes slightly more time. These results were obtained on a M4 Macbook Air.
 
 ### jolt
 

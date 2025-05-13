@@ -1,40 +1,31 @@
 # Code Artifacts for "Speeding Up Sum-Check Proving"
 
-This repository collects the implementation component of our paper, submitted to Asiacrypt 2025. There are three main repos (included as submodules):
+This repository collects the implementation component of our paper, submitted to Asiacrypt 2025. There are three main codebases (now vendored directly in this repository):
 
-- `arkworks-algebra`: include the code for optimized multiplication of a large field element (in Montgomery form, represented as N limbs of u64's) with `{u64/i64/u128/i128}` elements.
-- `jolt`: include the code for small value optimization applied to Spartan
-- `smallfield-super-sumcheck`: include the standalone implementation for individual benchmarks
+- `arkworks-algebra`: includes the code for optimized multiplication of a large field element (in Montgomery form, represented as N limbs of u64's) with `{u64/i64/u128/i128}` elements.
+- `jolt`: will include the code for small value optimization applied to Spartan (**coming soon**)
+- `smallfield-super-sumcheck`: will include the standalone implementation for individual benchmarks (**coming soon**)
 
-## Cloning the Repository and Building Submodules
+## Repository Structure and Setup
 
-To clone this repository and its submodules, follow these steps:
+All code dependencies are now included directly in this repository. There are **no submodules** or external Git dependencies. To get started:
 
-1.  Clone the main repository:
+1.  Clone this repository as usual:
     ```bash
-    git clone --recurse-submodules <URL_OF_THIS_REPO>
+    git clone <URL_OF_THIS_REPO>
     cd asiacrypt-2025-submission
     ```
-    If you have already cloned the repository without the submodules, you can initialize and update them using:
-    ```bash
-    git submodule update --init --recursive
-    ```
-
-2.  To ensure the submodules are on the correct branches as specified in `.gitmodules` and to pull the latest changes from those branches:
-    ```bash
-    git submodule sync --recursive
-    git submodule update --init --recursive --remote
-    ```
+2.  No further setup is required. All code is present in the repository.
 
 ## TODO: Testing & Benchmarking
 
-This section outlines the testing and benchmarking procedures for each submodule.
+This section outlines the testing and benchmarking procedures for each codebase.
 
 ### arkworks-algebra
 
 -   **Testing:**
     -   The following commands run the tests for optimized multiplication in the `ark-ff` crate, specifically targeting operations with `u64`/`i64`/`u128`/`i128` types. These tests use the `bn254` curve features.
-        First, navigate to the submodule directory:
+        First, navigate to the directory:
         ```bash
         cd arkworks-algebra
         ```
@@ -48,7 +39,7 @@ This section outlines the testing and benchmarking procedures for each submodule
         ```
 -   **Benchmarking:**
     -   The benchmarks for these optimized multiplication routines are located in the `ark-test-curves` crate, under the `small_mul` benchmark suite. These benchmarks also use the `bn254` curve features.
-        First, navigate to the submodule directory:
+        First, navigate to the directory:
         ```bash
         cd arkworks-algebra
         ```
@@ -66,13 +57,13 @@ This section outlines the testing and benchmarking procedures for each submodule
 ### jolt
 
 -   **Testing:**
-    -   [Instructions for running tests]
+    -   [Coming soon]
 -   **Benchmarking:**
-    -   [Instructions for running benchmarks]
+    -   [Coming soon]
 
 ### smallfield-super-sumcheck
 
 -   **Testing:**
-    -   [Instructions for running tests]
+    -   [Coming soon]
 -   **Benchmarking:**
-    -   [Instructions for running benchmarks]
+    -   [Coming soon]

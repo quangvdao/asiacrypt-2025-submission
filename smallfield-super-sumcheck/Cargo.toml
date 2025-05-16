@@ -1,0 +1,55 @@
+[package]
+name = "smallfield_sumcheck"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ark-ff = { version = "0.4.2", default-features = false }
+ark-serialize = { version = "0.4.2", default-features = false, features = [
+    "derive",
+] }
+ark-std = { version = "0.4.0", default-features = false }
+ark-poly = { version = "0.4.0", default-features = false }
+blake2 = { version = "0.10.6", default-features = false }
+hashbrown = { version = "0.14.0" }
+ark-ec = { version = "0.4.2" }
+ark-bls12-381 = { version = "0.4.0" }
+ark-bn254 = "0.4.0"
+rand = "0.8"
+merlin = { version = "3.0.0" }
+itertools = "0.12.1"
+nalgebra = { version = "0.32.5" }
+rstest = { version = "0.19.0" }
+num = { version = "0.4" }
+rayon = "1.5"
+flame = "0.2.2"
+sysinfo = "0.30"
+
+[dev-dependencies]
+criterion = "0.5.1"
+
+# Run using `cargo bench --bench btf_smallfield_sumcheck_bench`
+[[bench]]
+name = "btf_smallfield_sumcheck_bench"
+path = "benches/btf_sumcheck.rs"
+harness = false
+
+# Run using `cargo bench --bench btf_smallfield_sumcheck_with_eq_bench`
+[[bench]]
+name = "btf_smallfield_sumcheck_with_eq_bench"
+path = "benches/btf_sumcheck_with_eq.rs"
+harness = false
+
+# Run using `cargo bench --bench btf_smallfield_sumcheck_with_eq_thresh_bench`
+[[bench]]
+name = "btf_smallfield_sumcheck_with_eq_thresh_bench"
+path = "benches/btf_sumcheck_with_eq_thresh.rs"
+harness = false
+
+# Run using `cargo bench --bench btf_bench`
+[[bench]]
+name = "btf_bench"
+path = "benches/binius_tower_field.rs"
+harness = false
